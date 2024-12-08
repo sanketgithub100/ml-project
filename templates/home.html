@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block content%}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.RAM.label }}
+        {{ form.RAM }}
+        {% if form.RAM.errors %}
+            {% for error in form.RAM.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.ROM.label }}
+        {{ form.ROM }}
+        {% if form.ROM.errors %}
+            {% for error in form.ROM.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.Display }}
+        {{ form.Display.label }}
+        {% if form.Display.errors %}
+            {% for error in form.Display.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.Primary_Cam }}
+        {{ form.Primary_Cam.label }}
+        {% if form.Primary_Cam.errors %}
+            {% for error in form.Primary_Cam.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.Selfi_Cam }}
+        {{ form.Selfi_Cam.label }}
+        {% if form.Selfi_Cam.errors %}
+            {% for error in form.Selfi_Cam.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.Battery }}
+        {{ form.Battery.label }}
+        {% if form.Battery.errors %}
+            {% for error in form.Battery.errors %}
+                <div>{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+
+    <div>
+        {{ form.Predict() }}
+    </div>
+    <br>
+
+</form>
+{% endblock content%}

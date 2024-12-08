@@ -4,7 +4,7 @@ from wtforms import SelectField,FloatField,IntegerField,SubmitField
 from wtforms.validators import DataRequired
 
 #importing the data
-data=pd.read_csv("Data/Mobile Price Prediction Datatset.xls")
+data=pd.read_csv("Data/cleaned_data.xls")
 
 class input_form(FlaskForm):
     RAM=SelectField(label="RAM"

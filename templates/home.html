@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% block content%}
+{% block content %}
 <form action="" method="post">
     {{ form.hidden_tag() }}
     <div>
@@ -26,8 +26,8 @@
     <br>
 
     <div>
-        {{ form.Display }}
         {{ form.Display.label }}
+        {{ form.Display }}
         {% if form.Display.errors %}
             {% for error in form.Display.errors %}
                 <div>{{ error }}</div>
@@ -37,8 +37,8 @@
     <br>
 
     <div>
-        {{ form.Primary_Cam }}
         {{ form.Primary_Cam.label }}
+        {{ form.Primary_Cam }}
         {% if form.Primary_Cam.errors %}
             {% for error in form.Primary_Cam.errors %}
                 <div>{{ error }}</div>
@@ -48,8 +48,8 @@
     <br>
 
     <div>
-        {{ form.Selfi_Cam }}
         {{ form.Selfi_Cam.label }}
+        {{ form.Selfi_Cam }}
         {% if form.Selfi_Cam.errors %}
             {% for error in form.Selfi_Cam.errors %}
                 <div>{{ error }}</div>
@@ -59,8 +59,8 @@
     <br>
 
     <div>
-        {{ form.Battery }}
         {{ form.Battery.label }}
+        {{ form.Battery }}
         {% if form.Battery.errors %}
             {% for error in form.Battery.errors %}
                 <div>{{ error }}</div>
@@ -70,9 +70,12 @@
     <br>
 
     <div>
-        {{ form.Predict() }}
+        {{ form.submit() }}
     </div>
     <br>
+    <div>
+        {{ output }}
+    </div>
 
 </form>
-{% endblock content%}
+{% endblock content %}

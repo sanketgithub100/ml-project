@@ -3,20 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>{{ title }}</title>
-    
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body and background styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url(static/images/pexels-cottonbro-8721314.jpg) no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container to center the form */
+        .form-container {
+            background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+            border-radius: 15px;
+            padding: 20px; /* Maintain the padding */
+            width: 100%;
+            max-width: 400px; /* Keep the width responsive */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 3cm;  /* 3 cm space from the top */
+            margin-bottom: 3cm;  /* 3 cm space from the bottom */
+        }
+
+
+        /* Title */
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Styling for individual fields */
+        form div {
+            margin-bottom: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Align fields to the center */
+        }
+
+        /* Label styling */
+        form div label {
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        /* Input and select styling */
+        form div input,
+        form div select {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            background-color: #f8f8f8;
+            color: #333;
+            width: 100%;
+            max-width: 350px;
+            outline: none;
+            transition: all 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        /* Focus state for inputs and selects */
+        form div input:focus,
+        form div select:focus {
+            border-color: #4CAF50;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+
+        /* Button container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            padding: 14px 28px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease; /* No gradient in transition */
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-container button:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb); /* Swap gradient directly */
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* Styling for the predicted price result */
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFEB3B;
+            text-align: center; /* Center align the text */
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div>{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %} 
-    
-    {% block content %}
-    {% endblock %}
+
+    <div class="form-container">
+        <h1>Phone Price Prediction</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+
+            <div>
+                {{ form.RAM.label }}
+                {{ form.RAM }}
+            </div>
+
+            <div>
+                {{ form.ROM.label }}
+                {{ form.ROM }}
+            </div>
+
+            <div>
+                {{ form.Display.label }}
+                {{ form.Display }}
+            </div>
+
+            <div>
+                {{ form.Primary_Cam.label }}
+                {{ form.Primary_Cam }}
+            </div>
+
+            <div>
+                {{ form.Selfi_Cam.label }}
+                {{ form.Selfi_Cam }}
+            </div>
+
+            <div>
+                {{ form.Battery.label }}
+                {{ form.Battery }}
+            </div>
+
+            <div class="button-container">
+                <button type="submit">{{ form.submit.label }}</button>
+            </div>
+        </form>
+
+        <div class="result">
+            {% if output %}
+                Predicted Price: ₹{{ output }}
+            {% endif %}
+        </div>
+    </div>
+
 </body>
 </html>

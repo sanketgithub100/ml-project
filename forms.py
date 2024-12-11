@@ -22,11 +22,11 @@ class input_form(FlaskForm):
                         choices=data.Primary_Cam.unique().tolist(),    
                     validators=[DataRequired()])
     
-    Selfi_Cam=SelectField(label="Primary Camera",
+    Selfi_Cam=SelectField(label="Selfi Camera",
                           choices=data.Selfi_Cam.unique().tolist(),
                     validators=[DataRequired()])
     
     Battery=IntegerField(label="Battery Size",
                     validators=[DataRequired()])
     
-    Predict=SubmitField("Predict")
+    submit=SubmitField("Predict")
